@@ -1,0 +1,142 @@
+vocabulary:
+  - term: task
+    definition: >-
+      A unit of work in Height. Tasks have a unique UUID id and an integer index
+      (e.g. T-123). Tasks belong to one or more lists and carry status,
+      assignees, fields, and activity history.
+    related:
+      - list
+      - activity
+      - fieldTemplate
+
+  - term: list
+    definition: >-
+      A container for tasks. Lists can be of type "list" (holds tasks directly),
+      "smartlist" (filter-based view across lists), "user" (tasks assigned to a
+      user), "inbox" (recent conversations), or "search".
+    related:
+      - task
+      - smartlist
+
+  - term: smartlist
+    definition: >-
+      A special list type that uses filters to aggregate tasks from across the
+      workspace rather than containing tasks directly.
+    related:
+      - list
+      - filters
+
+  - term: activity
+    definition: >-
+      An event or message attached to a task. Activity types include comment,
+      description, createdAt, statusChange, assigneeChange, listsChange,
+      nameChange, customFieldChange, and fieldOptionRemoved.
+    related:
+      - task
+      - reactji
+
+  - term: reactji
+    definition: >-
+      An emoji reaction attached to an activity (comment or message). Each
+      reactji records the emoji, the user who added it, and the activity it
+      belongs to.
+    related:
+      - activity
+
+  - term: fieldTemplate
+    definition: >-
+      A schema definition for a custom attribute on tasks. Field template types
+      include text, labels, select, date, linkedTasks, and status. Each
+      fieldTemplate can have options (labels) associated with it.
+    related:
+      - fieldLabel
+      - fieldLabelSet
+      - task
+
+  - term: fieldLabel
+    definition: >-
+      An option value within a fieldTemplate of type labels, select, or status.
+      Each label has a hue (0-360) for color, and status labels additionally
+      carry a statusState.
+    related:
+      - fieldTemplate
+      - fieldLabelSet
+
+  - term: fieldLabelSet
+    definition: >-
+      A grouping of fieldLabels within a status fieldTemplate, used to organise
+      status options into sets.
+    related:
+      - fieldTemplate
+      - fieldLabel
+
+  - term: taskForm
+    definition: >-
+      A public or restricted form that allows workspace members or external
+      users to submit new tasks by answering a structured set of questions.
+    related:
+      - task
+
+  - term: user
+    definition: >-
+      A member of a Height workspace. Users can be in state "enabled" (active)
+      or "invited" (pending). Access levels are member, guest, or anonymous.
+    related:
+      - group
+      - workspace
+
+  - term: group
+    definition: >-
+      A named collection of users in a workspace, identified by a handle and a
+      color hue. Groups can be mentioned in activities using @group_<groupId>.
+    related:
+      - user
+
+  - term: workspace
+    definition: >-
+      The top-level organizational unit in Height. A workspace has a unique id,
+      a name, and a URL (e.g. https://acme.height.app).
+    related:
+      - user
+      - list
+
+  - term: securityLogEvent
+    definition: >-
+      An audit log entry recording a security-relevant action in the workspace,
+      such as user invitations, sign-ups, permission changes, and attribute
+      create/update/archive operations.
+    related:
+      - user
+      - workspace
+
+  - term: webhook
+    definition: >-
+      A configured HTTP callback that Height calls when specified events occur
+      in the workspace, enabling real-time integrations with external systems.
+    related:
+      - workspace
+
+  - term: filters
+    definition: >-
+      A JSON object used with smartlists and task search to select tasks based
+      on criteria such as status, assignee, completion state, and last activity
+      date.
+    related:
+      - smartlist
+      - task
+
+  - term: apiKey
+    definition: >-
+      A secret credential generated from Height workspace settings, passed in
+      the Authorization header as "api-key secret_<value>" to authenticate REST
+      API requests.
+    related:
+      - oauth
+
+  - term: oauth
+    definition: >-
+      An OAuth 2.0 authorization code grant flow supported by Height for
+      third-party application integrations, allowing apps to act on behalf of
+      workspace users.
+    related:
+      - apiKey

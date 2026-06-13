@@ -1,0 +1,89 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "height": "https://height.app/api/vocab#",
+    "aid": "@id",
+
+    "Task": "height:Task",
+    "List": "height:List",
+    "Activity": "height:Activity",
+    "FieldTemplate": "height:FieldTemplate",
+    "FieldLabel": "height:FieldLabel",
+    "FieldLabelSet": "height:FieldLabelSet",
+    "TaskForm": "height:TaskForm",
+    "User": "height:User",
+    "Group": "height:Group",
+    "Workspace": "height:Workspace",
+    "SecurityLogEvent": "height:SecurityLogEvent",
+    "Webhook": "height:Webhook",
+
+    "id": "@id",
+    "model": "@type",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "email": "schema:email",
+    "createdAt": "schema:dateCreated",
+    "completedAt": "schema:dateModified",
+    "deletedAt": "schema:dateDeleted",
+
+    "index": "height:index",
+    "listIds": "height:listIds",
+    "status": "height:status",
+    "assigneesIds": "height:assigneesIds",
+    "fields": "height:fields",
+    "deleted": "height:deleted",
+    "completed": "height:completed",
+    "lastActivityAt": "height:lastActivityAt",
+    "trashedAt": "height:trashedAt",
+    "trashedByUserId": "height:trashedByUserId",
+    "parentTaskId": "height:parentTaskId",
+
+    "type": "height:listType",
+    "key": "height:key",
+    "appearance": "height:appearance",
+    "visualization": "height:visualization",
+    "filters": "height:filters",
+    "archivedAt": "height:archivedAt",
+
+    "taskId": "height:taskId",
+    "createdUserId": "height:createdUserId",
+    "message": "schema:text",
+    "oldValue": "height:oldValue",
+    "newValue": "height:newValue",
+    "reactjis": "height:reactjis",
+    "readUserIds": "height:readUserIds",
+
+    "fieldTemplateId": "height:fieldTemplateId",
+    "labelSets": "height:labelSets",
+    "labels": "height:labels",
+    "hue": "height:hue",
+    "statusState": "height:statusState",
+    "archive": "height:archive",
+
+    "urlKey": "height:urlKey",
+    "publicAccess": "height:publicAccess",
+    "questions": "height:questions",
+    "draft": "height:draft",
+
+    "state": "height:state",
+    "username": "schema:identifier",
+    "firstname": "schema:givenName",
+    "lastname": "schema:familyName",
+    "pictureUrl": "schema:image",
+    "access": "height:access",
+
+    "handle": "height:handle",
+    "userIds": "height:userIds",
+    "archived": "height:archived",
+
+    "userId": "height:userId",
+    "userEmail": "height:userEmail",
+    "eventType": "height:eventType",
+
+    "orderIntent": "height:orderIntent",
+    "realtime": "height:realtime",
+    "notifyUsers": "height:notifyUsers"
+  }
+}
