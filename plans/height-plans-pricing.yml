@@ -1,0 +1,74 @@
+name: Height Plans and Pricing
+description: >
+  Height offers a freemium pricing model with four tiers designed for teams of
+  varying sizes. All plans include unlimited members and guests with varying
+  feature levels and automation quotas. Height announced shutdown of service
+  effective September 24, 2025.
+specificationVersion: '0.1'
+url: https://height.app/pricing
+plans:
+  - name: Free
+    description: >
+      Free tier for teams getting started with project management. Includes
+      unlimited members, unlimited tasks and subtasks, and basic project
+      management features.
+    price: 0
+    currency: USD
+    period: monthly
+    features:
+      - Unlimited team members
+      - Unlimited guests
+      - Unlimited tasks and subtasks
+      - 50 MB file storage
+      - Basic automations
+      - GitHub and GitLab integration
+      - Multiple views (list, kanban, calendar, gantt)
+      - Real-time chat
+  - name: Team
+    description: >
+      Paid tier for growing teams needing more storage, automations, and
+      advanced features including AI Copilot and enhanced integrations.
+    price: 8.50
+    currency: USD
+    period: monthly
+    annual_price: 6.99
+    annual_currency: USD
+    features:
+      - Everything in Free
+      - Increased file storage
+      - Up to 500 monthly automations per user
+      - AI Copilot features
+      - Time tracking
+      - Advanced reporting
+      - Priority support
+  - name: Business
+    description: >
+      Advanced tier for larger teams requiring higher automation quotas, advanced
+      security, admin controls, and enterprise-grade integrations.
+    price: 14.99
+    currency: USD
+    period: monthly
+    annual_price: 11.99
+    annual_currency: USD
+    features:
+      - Everything in Team
+      - Up to 2500 monthly automations per user
+      - Advanced admin controls
+      - Audit log access
+      - SSO / SAML support
+      - Custom roles and permissions
+      - Dedicated account manager
+  - name: Enterprise
+    description: >
+      Custom enterprise tier for large organizations requiring custom contracts,
+      SLAs, and tailored support arrangements.
+    price: custom
+    currency: USD
+    period: custom
+    features:
+      - Everything in Business
+      - Custom contract and SLA
+      - Custom automations quota
+      - Dedicated implementation support
+      - Custom integrations
+      - Enterprise security review

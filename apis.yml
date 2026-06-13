@@ -1,0 +1,76 @@
+aid: height
+name: Height
+description: >
+  Height is an AI-powered collaborative project management tool that provides a
+  REST API for managing tasks, lists, workspaces, attributes, dependencies, and
+  automation triggers. The API enables developers to programmatically create,
+  read, update, and delete tasks and task lists, manage workspace users and
+  groups, post activity comments, and configure webhook integrations for
+  real-time event notifications. Authentication is handled via secret API keys
+  generated from workspace settings, with OAuth 2.0 available for third-party
+  application integrations. Height announced the shutdown of its service with a
+  final date of September 24, 2025, making this a historical profile of the
+  platform's public developer footprint.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/height/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Project Management
+  - Task Management
+  - Collaboration
+  - Productivity
+  - Workflow Automation
+  - AI
+apis:
+  - aid: height:height-api
+    name: Height REST API
+    description: >
+      The Height REST API provides programmatic access to workspace tasks, lists,
+      users, activities, field templates, webhooks, and automation triggers.
+      Resources are identified by UUID v4 identifiers and all timestamps follow
+      ISO 8601 format. Real-time propagation ensures API changes are immediately
+      reflected across all workspace members.
+    humanURL: https://height.app/product/api
+    baseURL: https://api.height.app
+    tags:
+      - Tasks
+      - Lists
+      - Activities
+      - Users
+      - Webhooks
+      - Workspaces
+      - Automations
+    properties:
+      - type: Documentation
+        url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+      - type: OpenAPI
+        url: https://height-api.xyz/openapi/
+common:
+  - type: Website
+    url: https://height.app
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+  - type: GitHubOrg
+    url: https://github.com/heightapp
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/heightapp
+  - type: Blog
+    url: https://height.app/blog
+  - type: Pricing
+    url: https://height.app/pricing
+  - type: StatusPage
+    url: https://status.height.app
+  - type: X
+    url: https://twitter.com/height_app
+  - type: Plans
+    url: plans/height-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/height-rate-limits.yml
+  - type: FinOps
+    url: finops/height-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,55 @@
+name: Height API Rate Limits
+description: >
+  Height enforces rate limits on API requests to ensure fair usage and platform
+  stability. Requests exceeding the allowed rate receive HTTP 429 Too Many
+  Requests responses. Standard limits apply globally with stricter limits on
+  write-heavy endpoints.
+specificationVersion: '0.1'
+url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+limits:
+  - name: Global Request Limit
+    description: >
+      Default rate limit applied to all API endpoints. Clients sending more
+      than 120 requests per minute will receive HTTP 429 responses until the
+      rate window resets.
+    requests: 120
+    period: minute
+    scope: global
+    error_code: 429
+    error_message: Too Many Requests
+  - name: POST /activities Limit
+    description: >
+      Stricter rate limit applied to the activity creation endpoint to prevent
+      comment and message spam within task threads.
+    requests: 60
+    period: minute
+    scope: endpoint
+    endpoint: POST /activities
+    error_code: 429
+    error_message: Too Many Requests
+  - name: POST /tasks Limit
+    description: >
+      Stricter rate limit applied to the task creation endpoint to prevent
+      bulk task spam and ensure workspace performance for all users.
+    requests: 60
+    period: minute
+    scope: endpoint
+    endpoint: POST /tasks
+    error_code: 429
+    error_message: Too Many Requests
+headers:
+  - name: Authorization
+    description: >
+      All API requests require a secret key passed via the Authorization
+      header. Obtain the secret key from Height workspace Settings > API.
+    format: "api-key {secretKey}"
+    required: true
+authentication:
+  - type: api-key
+    description: Secret key obtained from workspace Settings > API section
+    header: Authorization
+    format: "api-key {secretKey}"
+  - type: oauth2
+    description: OAuth 2.0 for third-party application integrations
+    flows:
+      - authorization_code

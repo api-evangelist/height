@@ -1,0 +1,92 @@
+name: Height FinOps
+description: >
+  FinOps Framework FOCUS-aligned cost and usage data for the Height project
+  management API platform. Height offered a freemium model with per-member
+  monthly and annual pricing. The service announced shutdown effective
+  September 24, 2025.
+specificationVersion: '1.0'
+url: https://height.app/pricing
+provider: Height
+service: Height Project Management API
+currency: USD
+billing_model: per_seat
+billing_period: monthly
+cost_dimensions:
+  - dimension: Members
+    description: >
+      Cost is calculated per workspace member per month. All plans charge per
+      active member with monthly or annual billing cycles.
+    unit: member
+    granularity: monthly
+  - dimension: Automations
+    description: >
+      Automation runs are metered per member per month. Higher tiers include
+      more monthly automation executions before throttling.
+    unit: automation_run
+    granularity: monthly
+  - dimension: Storage
+    description: >
+      File attachment storage is included per plan tier. The Free tier includes
+      50 MB. Paid tiers provide increased storage allowances.
+    unit: megabytes
+    granularity: monthly
+sku:
+  - id: height-free
+    name: Free Plan
+    description: Free tier with unlimited members and basic features
+    price_per_unit: 0.00
+    unit: member
+    period: monthly
+    currency: USD
+  - id: height-team-monthly
+    name: Team Plan (Monthly)
+    description: Team tier billed monthly per member
+    price_per_unit: 8.50
+    unit: member
+    period: monthly
+    currency: USD
+  - id: height-team-annual
+    name: Team Plan (Annual)
+    description: Team tier billed annually per member, amortized monthly
+    price_per_unit: 6.99
+    unit: member
+    period: monthly
+    currency: USD
+    commitment: annual
+  - id: height-business-monthly
+    name: Business Plan (Monthly)
+    description: Business tier billed monthly per member
+    price_per_unit: 14.99
+    unit: member
+    period: monthly
+    currency: USD
+  - id: height-business-annual
+    name: Business Plan (Annual)
+    description: Business tier billed annually per member, amortized monthly
+    price_per_unit: 11.99
+    unit: member
+    period: monthly
+    currency: USD
+    commitment: annual
+  - id: height-enterprise
+    name: Enterprise Plan
+    description: Custom enterprise pricing negotiated per contract
+    price_per_unit: custom
+    unit: member
+    period: custom
+    currency: USD
+cost_optimization:
+  - recommendation: Annual Billing Discount
+    description: >
+      Switching from monthly to annual billing yields approximately 18% savings
+      on the Team plan ($8.50 vs $6.99/member/month) and 20% on the Business
+      plan ($14.99 vs $11.99/member/month).
+    savings_pct: 18-20
+  - recommendation: Right-size Members
+    description: >
+      Regularly audit active workspace members. Remove or deactivate users who
+      are no longer active to reduce per-seat costs.
+  - recommendation: Free Tier for Small Teams
+    description: >
+      The Free plan supports unlimited members with basic features, making it
+      suitable for small teams or evaluation without cost.
