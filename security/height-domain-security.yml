@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: height.app
+  https: false
+- host: api.height.app
+  https: false
+domains:
+- domain: height.app
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false

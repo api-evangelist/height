@@ -51,6 +51,10 @@ apis:
       - type: OpenAPI
         url: openapi/height-height-api-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/height-domain-security.yml
+  - type: Authentication
+    url: authentication/height-authentication.yml
   - type: Website
     url: https://height.app
   - type: Documentation

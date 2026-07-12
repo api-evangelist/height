@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/height-height-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: |-
+    The Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.
+     ex: `api-key secret_1234`
+  sources:
+  - openapi/height-height-api-openapi.yml
