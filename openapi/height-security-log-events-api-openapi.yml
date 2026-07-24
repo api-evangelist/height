@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: Height APP Activities Security Log Events API
+  description: "Unofficial Open API 3.1 specification for [Height App API](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). This is not affiliated with Height team.\n\n---\n# Authentication\n\nThe Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.\n\nAuthentication to the API is performed via the `Authorization` header. All API requests should be made over HTTPs.\n\ni.e. Get your workspace.\n\n```bash\ncurl https://api.height.app/workspace \\\n  -H \"Authorization: api-key secret_1234\"\n```\n\nThird-party applications must connect to the Height API using [OAuth2](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). \n\nSee [OAuth Apps on Height](https://www.notion.so/OAuth-Apps-on-Height-a8ebeab3f3f047e3857bd8ce60c2f640) for more information.\n\n# Object formats\n\nAll objects have a unique `id` ([UUID v4](https://en.m.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random))) and a `model` attribute to distinguish the model type.\n\ne.g. a task object.\n\n```json\n{\n  \"id\": \"123e4567-e89b-12d3-a456-426655440000\",\n  \"model\": \"task\",\n  \"name\": \"Fix bug\",\n  \"index\": 1,\n  \"status\": \"backLog\",\n  [...]\n}\n```\n\n# Date formats\n\nEvery date uses the ISO format e.g.\n\n```js\n\"2019-11-07T17:00:00.000Z\"\n```\n\n# Real-time\n\nAny change that you make to the API will be pushed to every user in real-time: i.e. creating tasks or messages.\n\n# Rate limits\n\nTo keep incoming traffic under control and maintain a great experience for all our users, our API is behind a rate limiter. Users who send many requests in quick succession may see error responses that show up as status code 429.\n\nHeight allows up to 120 requests/min, but we have stricter limits on these endpoints:\n\n- `POST /activities`: 60 requests/min\n- `POST /tasks`: 60 requests/min"
+  contact:
+    email: gil@beomjun.kr
+  license:
+    name: MIT
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://api.height.app
+security:
+- apiKey: []
+tags:
+- name: Security Log Events
+paths:
+  /securityLogEvents:
+    get:
+      tags:
+      - Security Log Events
+      summary: List all security log event objects
+      operationId: listSecurityLogEvents
+      x-codeSamples:
+      - lang: JavaScript
+        label: SDK
+        source: 'const height = new Height({secretKey: ''secret_your-key''});
+
+
+          height.securityLogEvents.all();'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAllSecurityLogEventsResponse'
+components:
+  schemas:
+    ListAllSecurityLogEventsResponse:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/SecurityLogEventObject'
+    SecurityLogEventObject:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique ID of the event.
+        model:
+          type: string
+          description: The model is always `securityLogEvent`.
+          enum:
+          - securityLogEvent
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the event occurred. See [Date formats](https://developers.notion.com/reference/rich-text#date-property-values).
+          example: '2023-02-18T11:20:00Z'
+        userId:
+          type: string
+          format: uuid
+          description: The ID of the user that initiated the event.
+        userEmail:
+          type: string
+          description: The email of the user that initiated the event.
+        eventType:
+          type: string
+          description: 'Possible values are:
+
+
+            - `FieldTemplateInsert`: an attribute was created
+
+            - `FieldTemplateUpdate`: an attribute was updated
+
+            - `FieldTemplateArchive`: an attribute was archived
+
+            - `FieldTemplateRestore`: an attribute was restored
+
+            - `PermissionUpsert`: a list permission was created or updated
+
+            - `PermissionDelete`: a list permission was deleted
+
+            - `UserInvite`: an user was invited
+
+            - `UserSignUp`: an user signed up'
+          enum:
+          - FieldTemplateInsert
+          - FieldTemplateUpdate
+          - FieldTemplateArchive
+          - FieldTemplateRestore
+          - PermissionUpsert
+          - PermissionDelete
+          - UserInvite
+          - UserSignUp
+          example: FieldTemplateInsert
+        oldValue:
+          type: object
+          description: The old value of the attribute, permission, etc. that was updated or deleted.
+          example:
+            email: invited@example.com
+            access: member
+        newValue:
+          type: object
+          description: The new value of the attribute, permission, etc. that was updated or created.
+          example:
+            email: invited@example.com
+            access: member
+      required:
+      - id
+      - model
+      - createdAt
+      - userId
+      - userEmail
+      - eventType
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: Authorization
+      description: "The Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.\n ex: `api-key secret_1234`"
+      in: header
+externalDocs:
+  description: Height official API Docs
+  url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda

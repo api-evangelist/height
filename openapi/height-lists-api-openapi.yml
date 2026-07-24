@@ -1,0 +1,334 @@
+openapi: 3.0.3
+info:
+  title: Height APP Activities Lists API
+  description: "Unofficial Open API 3.1 specification for [Height App API](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). This is not affiliated with Height team.\n\n---\n# Authentication\n\nThe Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.\n\nAuthentication to the API is performed via the `Authorization` header. All API requests should be made over HTTPs.\n\ni.e. Get your workspace.\n\n```bash\ncurl https://api.height.app/workspace \\\n  -H \"Authorization: api-key secret_1234\"\n```\n\nThird-party applications must connect to the Height API using [OAuth2](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). \n\nSee [OAuth Apps on Height](https://www.notion.so/OAuth-Apps-on-Height-a8ebeab3f3f047e3857bd8ce60c2f640) for more information.\n\n# Object formats\n\nAll objects have a unique `id` ([UUID v4](https://en.m.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random))) and a `model` attribute to distinguish the model type.\n\ne.g. a task object.\n\n```json\n{\n  \"id\": \"123e4567-e89b-12d3-a456-426655440000\",\n  \"model\": \"task\",\n  \"name\": \"Fix bug\",\n  \"index\": 1,\n  \"status\": \"backLog\",\n  [...]\n}\n```\n\n# Date formats\n\nEvery date uses the ISO format e.g.\n\n```js\n\"2019-11-07T17:00:00.000Z\"\n```\n\n# Real-time\n\nAny change that you make to the API will be pushed to every user in real-time: i.e. creating tasks or messages.\n\n# Rate limits\n\nTo keep incoming traffic under control and maintain a great experience for all our users, our API is behind a rate limiter. Users who send many requests in quick succession may see error responses that show up as status code 429.\n\nHeight allows up to 120 requests/min, but we have stricter limits on these endpoints:\n\n- `POST /activities`: 60 requests/min\n- `POST /tasks`: 60 requests/min"
+  contact:
+    email: gil@beomjun.kr
+  license:
+    name: MIT
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://api.height.app
+security:
+- apiKey: []
+tags:
+- name: Lists
+  description: Tasks belong to one list. To create tasks, it's necessary to know in which list you want to create them.
+paths:
+  /lists:
+    post:
+      tags:
+      - Lists
+      summary: Create a list
+      operationId: createList
+      x-codeSamples:
+      - lang: JavaScript
+        label: SDK
+        source: "const height = new Height({secretKey: 'secret_your-key'});\n\nheight.lists.create({\n  name: 'My List',\n  type: 'list',\n  // ...\n});"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateListRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListObject'
+    get:
+      tags:
+      - Lists
+      summary: List all lists
+      operationId: listAllLists
+      x-codeSamples:
+      - lang: JavaScript
+        label: SDK
+        source: 'const height = new Height({secretKey: ''secret_your-key''});
+
+
+          height.lists.all();'
+      description: Use this endpoint to retrieve all the lists of the workspace. Only lists shared with the entire workspace will be returned.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ListAllResponse'
+  /lists/{id}:
+    put:
+      tags:
+      - Lists
+      summary: Update a list
+      operationId: updateList
+      x-codeSamples:
+      - lang: JavaScript
+        label: SDK
+        source: 'const height = new Height({secretKey: ''secret_your-key''});
+
+
+          height.lists.update({...});'
+      parameters:
+      - name: id
+        in: path
+        description: The unique id of the list (UUIDv4)
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateListRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListObject'
+components:
+  schemas:
+    ListObject:
+      type: object
+      description: Tasks belong to one list. To create tasks, it's necessary to know in which list you want to create them.
+      required:
+      - id
+      - model
+      - type
+      - key
+      - description
+      - url
+      - appearance
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique id of the list (UUIDv4)
+        model:
+          type: string
+          example: list
+          enum:
+          - list
+          description: The model is always `list`
+        type:
+          type: string
+          description: '- `list`: a list that contains tasks. You can only create tasks in this type of list directly.
+
+            - `smartlist`: a smart list use filters to find tasks across different lists
+
+            - `user`: a special smart list that displays tasks assigned to a user
+
+            - `inbox`: a special smart list to display recent conversations
+
+            - `search`: a special smart list to search tasks'
+          enum:
+          - list
+          - smartlist
+          - user
+          - inbox
+          - search
+        key:
+          type: string
+          description: "The unique key of your list is used as their url.\n\nIf the key is `general`, the url will be: `https://your-workspace.height.app/general`\n\nKeys need to respect these rules: \n\n- valid characters are: lower-case letters, dashes and numbers\n- needs to start with a lower-case letter\n- key is unique across the workspace"
+        description:
+          type: string
+          description: The description of the list. It can be an empty string.
+        url:
+          type: string
+          description: The url of the list.
+        appearance:
+          type: object
+          required:
+          - iconUrl
+          properties:
+            iconUrl:
+              type: string
+              description: URL of the list icon
+            hue:
+              type:
+              - 'null'
+              - number
+              description: 'hue of the list color '
+    UpdateListRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        appearance:
+          type: object
+          properties:
+            icon:
+              type: string
+              description: the name of the icon e.g. listCircles, listBug.
+            hue:
+              type: number
+          required:
+          - icon
+        visualization:
+          type: string
+          enum:
+          - list
+          - kanban
+          - calendar
+          - gantt
+          - conversation
+          - figma
+        archivedAt:
+          type: string
+          description: string representing a date the list was archived at, in the form of an ISO 8601 date (e.g. 2011-04-11T10:20:30Z).
+          format: date-time
+    FiltersObject:
+      type: object
+      description: See FiltersObject.ts
+    CreateListRequest:
+      oneOf:
+      - $ref: '#/components/schemas/CreateNormalListRequest'
+      - $ref: '#/components/schemas/CreateSmartListRequest'
+    CreateNormalListRequest:
+      type: object
+      description: Create a list
+      required:
+      - name
+      - type
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - list
+          - smartlist
+        description:
+          type: string
+        appearance:
+          type: object
+          required:
+          - icon
+          properties:
+            icon:
+              type: string
+              enum:
+              - list
+              - listCircles
+              - listTriangle
+              - listSquare
+              - listLines
+              - listRectangles
+              - listCircle
+              - listRocket
+              - listMushroom
+              - listBolt
+              - listBug
+              - listFlower
+              - listThumbsUp
+              - listTarget
+              - listSparkle
+              - listMedal
+              - listFlag
+            hue:
+              description: 'Hue is between 0 and 360 and used to determine the color.
+
+
+                If `null`, the list has no color.'
+              type:
+              - 'null'
+              - number
+              minimum: 0
+              maximum: 360
+        visualization:
+          description: visualization string (optional, default = list) list or kanban
+          default: list
+          type: string
+          enum:
+          - list
+          - kanban
+    ListAllResponse:
+      type: object
+      required:
+      - lists
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListObject'
+    CreateSmartListRequest:
+      type: object
+      description: Create a smartlist
+      required:
+      - name
+      - type
+      - filters
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - list
+          - smartlist
+        description:
+          type: string
+        filters:
+          $ref: '#/components/schemas/FiltersObject'
+        appearance:
+          type: object
+          required:
+          - icon
+          properties:
+            icon:
+              type: string
+              enum:
+              - list
+              - listCircles
+              - listTriangle
+              - listSquare
+              - listLines
+              - listRectangles
+              - listCircle
+              - listRocket
+              - listMushroom
+              - listBolt
+              - listBug
+              - listFlower
+              - listThumbsUp
+              - listTarget
+              - listSparkle
+              - listMedal
+              - listFlag
+            hue:
+              description: 'Hue is between 0 and 360 and used to determine the color.
+
+
+                If `null`, the list has no color.'
+              type:
+              - 'null'
+              - number
+              minimum: 0
+              maximum: 360
+        visualization:
+          description: visualization string (optional, default = list) list or kanban
+          default: list
+          type: string
+          enum:
+          - list
+          - kanban
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: Authorization
+      description: "The Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.\n ex: `api-key secret_1234`"
+      in: header
+externalDocs:
+  description: Height official API Docs
+  url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
