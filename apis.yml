@@ -12,7 +12,20 @@ description: >
   final date of September 24, 2025, making this a historical profile of the
   platform's public developer footprint.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/height.png
 url: https://raw.githubusercontent.com/api-evangelist/height/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -25,31 +38,117 @@ tags:
   - Workflow Automation
   - AI
 apis:
-  - aid: height:height-api
-    name: Height REST API
-    description: >
-      The Height REST API provides programmatic access to workspace tasks, lists,
-      users, activities, field templates, webhooks, and automation triggers.
-      Resources are identified by UUID v4 identifiers and all timestamps follow
-      ISO 8601 format. Real-time propagation ensures API changes are immediately
-      reflected across all workspace members.
-    humanURL: https://height.app/product/api
-    baseURL: https://api.height.app
-    tags:
-      - Tasks
-      - Lists
-      - Activities
-      - Users
-      - Webhooks
-      - Workspaces
-      - Automations
-    properties:
-      - type: Documentation
-        url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
-      - type: OpenAPI
-        url: https://height-api.xyz/openapi/
-      - type: OpenAPI
-        url: openapi/height-height-api-openapi.yml
+- aid: height:height-activities-api
+  name: Height Activities API
+  description: >-
+    Activities can be messages, status updates of the task or integration updates (i.e. GitHub).
+  humanURL: https://height.app/product/api
+  baseURL: https://api.height.app
+  tags:
+  - Activities
+  properties:
+  - type: OpenAPI
+    url: openapi/height-activities-api-openapi.yml
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+- aid: height:height-field-templates-api
+  name: Height Field Templates API
+  description: The Field Templates API from Height — 3 operation(s) for field templates.
+  humanURL: https://height.app/product/api
+  baseURL: https://api.height.app
+  tags:
+  - Field Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/height-field-templates-api-openapi.yml
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+- aid: height:height-groups-api
+  name: Height Groups API
+  description: The Groups API from Height — 1 operation(s) for groups.
+  humanURL: https://height.app/product/api
+  baseURL: https://api.height.app
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/height-groups-api-openapi.yml
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+- aid: height:height-lists-api
+  name: Height Lists API
+  description: >-
+    Tasks belong to one list. To create tasks, it's necessary to know in which list you want to create
+    them.
+  humanURL: https://height.app/product/api
+  baseURL: https://api.height.app
+  tags:
+  - Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/height-lists-api-openapi.yml
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+- aid: height:height-security-log-events-api
+  name: Height Security Log Events API
+  description: The Security Log Events API from Height — 1 operation(s) for security log events.
+  humanURL: https://height.app/product/api
+  baseURL: https://api.height.app
+  tags:
+  - Security Log Events
+  properties:
+  - type: OpenAPI
+    url: openapi/height-security-log-events-api-openapi.yml
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+- aid: height:height-task-forms-api
+  name: Height Task Forms API
+  description: The Task Forms API from Height — 2 operation(s) for task forms.
+  humanURL: https://height.app/product/api
+  baseURL: https://api.height.app
+  tags:
+  - Task Forms
+  properties:
+  - type: OpenAPI
+    url: openapi/height-task-forms-api-openapi.yml
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+- aid: height:height-tasks-api
+  name: Height Tasks API
+  description: The Tasks API from Height — 3 operation(s) for tasks.
+  humanURL: https://height.app/product/api
+  baseURL: https://api.height.app
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/height-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+- aid: height:height-users-api
+  name: Height Users API
+  description: The Users API from Height — 3 operation(s) for users.
+  humanURL: https://height.app/product/api
+  baseURL: https://api.height.app
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/height-users-api-openapi.yml
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
+- aid: height:height-workspace-api
+  name: Height Workspace API
+  description: The Workspace API from Height — 1 operation(s) for workspace.
+  humanURL: https://height.app/product/api
+  baseURL: https://api.height.app
+  tags:
+  - Workspace
+  properties:
+  - type: OpenAPI
+    url: openapi/height-workspace-api-openapi.yml
+  - type: Documentation
+    url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
 common:
   - type: AgenticAccess
     url: agentic-access/height-agentic-access.yml
