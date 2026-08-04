@@ -1,0 +1,30 @@
+{
+  "provider": "height",
+  "sources": [
+    "height-activities-api-openapi.yml",
+    "height-field-templates-api-openapi.yml",
+    "height-groups-api-openapi.yml",
+    "height-lists-api-openapi.yml",
+    "height-security-log-events-api-openapi.yml",
+    "height-task-forms-api-openapi.yml",
+    "height-tasks-api-openapi.yml",
+    "height-users-api-openapi.yml",
+    "height-workspace-api-openapi.yml"
+  ],
+  "outputs": [
+    "height-activities-api-openapi.yml",
+    "height-field-templates-api-openapi.yml",
+    "height-groups-api-openapi.yml",
+    "height-lists-api-openapi.yml",
+    "height-security-log-events-api-openapi.yml",
+    "height-task-forms-api-openapi.yml",
+    "height-tasks-api-openapi.yml",
+    "height-users-api-openapi.yml",
+    "height-workspace-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
