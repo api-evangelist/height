@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Height APP Activities Task Forms API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Task Forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a task from a public task form",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.height.app/taskForms/:id/answers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "task form id"
+              },
+              {
+                "name": "asBot",
+                "value": "",
+                "type": "query",
+                "description": "Only allowed for public task forms, and required if not authenticated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "❌ Task forms have a set number of questions, so it is impossible to set some attributes for a task using this endpoint"
+        },
+        {
+          "info": {
+            "name": "Get a task form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.height.app/taskForms/:urlKey",
+            "params": [
+              {
+                "name": "urlKey",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "keyType",
+                "value": "",
+                "type": "query",
+                "description": "One of key or urlKey, defaulting to id"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Array of task form includes"
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "draft",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a task form"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

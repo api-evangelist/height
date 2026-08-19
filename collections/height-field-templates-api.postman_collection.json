@@ -1,0 +1,378 @@
+{
+  "item": [
+    {
+      "id": "ce34c17d-ff00-40a7-9fa2-c4981ca72be3",
+      "name": "Field Templates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bfa09dfd-901a-43ef-a518-523bb61ec838",
+          "name": "List all field templates",
+          "request": {
+            "name": "List all field templates",
+            "description": {},
+            "url": {
+              "path": [
+                "fieldTemplates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31495125-cd90-48e3-95aa-ce40f7a806d3",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fieldTemplates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"list\": [\n    {\n      \"id\": \"b5a26586-d5a6-218d-870e-87c6a5df54d3\",\n      \"model\": \"fieldTemplate\",\n      \"name\": \"string\",\n      \"type\": \"text\",\n      \"archive\": true,\n      \"labelSets\": [\n        {\n          \"id\": \"5d5db952-fcae-846f-840f-22479fa3a5b9\",\n          \"model\": \"fieldLabelSet\",\n          \"value\": \"string\"\n        },\n        {\n          \"id\": \"4600b654-b372-d6f1-e909-778b42c989c8\",\n          \"model\": \"fieldLabelSet\",\n          \"value\": \"string\"\n        }\n      ],\n      \"labels\": [\n        {\n          \"id\": \"string\",\n          \"model\": \"fieldLabel\",\n          \"value\": \"string\",\n          \"hue\": 5954.6228470757105,\n          \"statusState\": \"canceled\",\n          \"labelSetId\": \"ea833778-27ab-7af6-0ce9-d226f3c7d5ee\"\n        },\n        {\n          \"id\": \"string\",\n          \"model\": \"fieldLabel\",\n          \"value\": \"string\",\n          \"hue\": 7966.311420860831,\n          \"statusState\": \"started\",\n          \"labelSetId\": \"59901554-85af-0851-c04f-5d8c4cfd0f8f\"\n        }\n      ]\n    },\n    {\n      \"id\": \"8620b3f6-d4fa-647d-7058-77fa5eed1201\",\n      \"model\": \"fieldTemplate\",\n      \"name\": \"string\",\n      \"type\": \"date\",\n      \"archive\": false,\n      \"labelSets\": [\n        {\n          \"id\": \"4fe3c395-6990-fd87-a842-516c42efd334\",\n          \"model\": \"fieldLabelSet\",\n          \"value\": \"string\"\n        },\n        {\n          \"id\": \"ae3e323d-e93d-c76c-08b1-41c22977eb2f\",\n          \"model\": \"fieldLabelSet\",\n          \"value\": \"string\"\n        }\n      ],\n      \"labels\": [\n        {\n          \"id\": \"string\",\n          \"model\": \"fieldLabel\",\n          \"value\": \"string\",\n          \"hue\": 5822.467524215732,\n          \"statusState\": \"started\",\n          \"labelSetId\": \"1ed6c328-c6dd-217f-cd2a-684c19decb50\"\n        },\n        {\n          \"id\": \"string\",\n          \"model\": \"fieldLabel\",\n          \"value\": \"string\",\n          \"hue\": 3265.134759800208,\n          \"statusState\": \"blocked\",\n          \"labelSetId\": \"4be31b25-420e-b764-cbff-49902bbd6158\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37ca1bf2-1cac-4e9b-ad80-c5a6669d0b5e",
+          "name": "Create an option for a field template",
+          "request": {
+            "name": "Create an option for a field template",
+            "description": {
+              "content": "This endpoint adds an option to a `select` or `labels` field template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fieldTemplates",
+                ":id",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) field template id (UUID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<string>\",\n  \"hue\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "93c63819-d869-4b2e-b5b6-7180da2e9ec1",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fieldTemplates",
+                    ":id",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) field template id (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<string>\",\n  \"hue\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"753a9be6-eaad-16fe-d1c8-d8e4ff4eb7c2\",\n  \"model\": \"fieldTemplate\",\n  \"name\": \"string\",\n  \"type\": \"date\",\n  \"archive\": true,\n  \"labelSets\": [\n    {\n      \"id\": \"f3ca6de3-2ad1-49e7-9469-4294e33a1e5c\",\n      \"model\": \"fieldLabelSet\",\n      \"value\": \"string\"\n    },\n    {\n      \"id\": \"8efe9c61-01cd-e6a5-4e27-ae7ee5c05c1b\",\n      \"model\": \"fieldLabelSet\",\n      \"value\": \"string\"\n    }\n  ],\n  \"labels\": [\n    {\n      \"id\": \"string\",\n      \"model\": \"fieldLabel\",\n      \"value\": \"string\",\n      \"hue\": 2670.541441606031,\n      \"statusState\": \"started\",\n      \"labelSetId\": \"ec6a1b27-a758-dc62-3d89-1647d10ab9af\"\n    },\n    {\n      \"id\": \"string\",\n      \"model\": \"fieldLabel\",\n      \"value\": \"string\",\n      \"hue\": 7297.259325284171,\n      \"statusState\": \"default\",\n      \"labelSetId\": \"3ea10544-694b-2e98-7be0-77fe2f473287\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c203d75-5dc4-4f05-a6c2-938da74dad43",
+          "name": "Update or delete an option for a field template",
+          "request": {
+            "name": "Update or delete an option for a field template",
+            "description": {
+              "content": "This endpoint updates or deletes an option to a `select` or `labels` field template.\n\nThe field template must be unlocked to use this endpoint.  Locking and unlocking field templates is an enterprise feature.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fieldTemplates",
+                ":id",
+                "options",
+                ":optionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "optionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<string>\",\n  \"hue\": \"<number>\",\n  \"deleted\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2a30388-9774-4f57-a2fd-7f78e9fbf421",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fieldTemplates",
+                    ":id",
+                    "options",
+                    ":optionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "optionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<string>\",\n  \"hue\": \"<number>\",\n  \"deleted\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"753a9be6-eaad-16fe-d1c8-d8e4ff4eb7c2\",\n  \"model\": \"fieldTemplate\",\n  \"name\": \"string\",\n  \"type\": \"date\",\n  \"archive\": true,\n  \"labelSets\": [\n    {\n      \"id\": \"f3ca6de3-2ad1-49e7-9469-4294e33a1e5c\",\n      \"model\": \"fieldLabelSet\",\n      \"value\": \"string\"\n    },\n    {\n      \"id\": \"8efe9c61-01cd-e6a5-4e27-ae7ee5c05c1b\",\n      \"model\": \"fieldLabelSet\",\n      \"value\": \"string\"\n    }\n  ],\n  \"labels\": [\n    {\n      \"id\": \"string\",\n      \"model\": \"fieldLabel\",\n      \"value\": \"string\",\n      \"hue\": 2670.541441606031,\n      \"statusState\": \"started\",\n      \"labelSetId\": \"ec6a1b27-a758-dc62-3d89-1647d10ab9af\"\n    },\n    {\n      \"id\": \"string\",\n      \"model\": \"fieldLabel\",\n      \"value\": \"string\",\n      \"hue\": 7297.259325284171,\n      \"statusState\": \"default\",\n      \"labelSetId\": \"3ea10544-694b-2e98-7be0-77fe2f473287\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.height.app",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a1211d6-e789-440a-b0b5-d9517df5e36d",
+    "name": "Height APP Activities Field Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unofficial Open API 3.1 specification for [Height App API](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). This is not affiliated with Height team.\n\n---\n# Authentication\n\nThe Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.\n\nAuthentication to the API is performed via the `Authorization` header. All API requests should be made over HTTPs.\n\ni.e. Get your workspace.\n\n```bash\ncurl https://api.height.app/workspace \\\n  -H \"Authorization: api-key secret_1234\"\n```\n\nThird-party applications must connect to the Height API using [OAuth2](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). \n\nSee [OAuth Apps on Height](https://www.notion.so/OAuth-Apps-on-Height-a8ebeab3f3f047e3857bd8ce60c2f640) for more information.\n\n# Object formats\n\nAll objects have a unique `id` ([UUID v4](https://en.m.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random))) and a `model` attribute to distinguish the model type.\n\ne.g. a task object.\n\n```json\n{\n  \"id\": \"123e4567-e89b-12d3-a456-426655440000\",\n  \"model\": \"task\",\n  \"name\": \"Fix bug\",\n  \"index\": 1,\n  \"status\": \"backLog\",\n  [...]\n}\n```\n\n# Date formats\n\nEvery date uses the ISO format e.g.\n\n```js\n\"2019-11-07T17:00:00.000Z\"\n```\n\n# Real-time\n\nAny change that you make to the API will be pushed to every user in real-time: i.e. creating tasks or messages.\n\n# Rate limits\n\nTo keep incoming traffic under control and maintain a great experience for all our users, our API is behind a rate limiter. Users who send many requests in quick succession may see error responses that show up as status code 429.\n\nHeight allows up to 120 requests/min, but we have stricter limits on these endpoints:\n\n- `POST /activities`: 60 requests/min\n- `POST /tasks`: 60 requests/min\n\nContact Support:\n Email: gil@beomjun.kr",
+      "type": "text/plain"
+    }
+  }
+}

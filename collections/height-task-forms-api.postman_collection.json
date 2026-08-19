@@ -1,0 +1,323 @@
+{
+  "item": [
+    {
+      "id": "3feaf0ad-b09b-47dd-a831-d8f044f7aada",
+      "name": "Task Forms",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7ebdfa8-ae42-4896-97d5-d243588350d8",
+          "name": "Create a task from a public task form",
+          "request": {
+            "name": "Create a task from a public task form",
+            "description": {
+              "content": "❌ Task forms have a set number of questions, so it is impossible to set some attributes for a task using this endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "taskForms",
+                ":id",
+                "answers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "asBot",
+                  "value": "<boolean>",
+                  "description": "Only allowed for public task forms, and required if not authenticated"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) task form id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"answers\": [\n    {\n      \"questionId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"assigneesIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"listIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"description\": \"<string>\",\n      \"field\": {\n        \"fieldTemplateId\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"date\": \"<dateTime>\",\n        \"labels\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"linkedTasks\": [\n          {\n            \"id\": \"<uuid>\",\n            \"index\": \"<number>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"index\": \"<number>\"\n          }\n        ]\n      }\n    },\n    {\n      \"questionId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"assigneesIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"listIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"description\": \"<string>\",\n      \"field\": {\n        \"fieldTemplateId\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"date\": \"<dateTime>\",\n        \"labels\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"linkedTasks\": [\n          {\n            \"id\": \"<uuid>\",\n            \"index\": \"<number>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"index\": \"<number>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b6fc846b-598d-406a-99a6-49102a963577",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "taskForms",
+                    ":id",
+                    "answers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asBot",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) task form id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"answers\": [\n    {\n      \"questionId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"assigneesIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"listIds\": [\n        \"d8dff420-ddbe-4afc-8837-f493e922be7b\",\n        \"2f2abf80-0a87-4d68-9241-fcc41f427c91\"\n      ],\n      \"description\": \"<string>\",\n      \"field\": {\n        \"fieldTemplateId\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"date\": \"<dateTime>\",\n        \"labels\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"linkedTasks\": [\n          {\n            \"id\": \"<uuid>\",\n            \"index\": \"<number>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"index\": \"<number>\"\n          }\n        ]\n      }\n    },\n    {\n      \"questionId\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"assigneesIds\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"listIds\": [\n        \"d8dff420-ddbe-4afc-8837-f493e922be7b\",\n        \"2f2abf80-0a87-4d68-9241-fcc41f427c91\"\n      ],\n      \"description\": \"<string>\",\n      \"field\": {\n        \"fieldTemplateId\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"date\": \"<dateTime>\",\n        \"labels\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"linkedTasks\": [\n          {\n            \"id\": \"<uuid>\",\n            \"index\": \"<number>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"index\": \"<number>\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model\": \"task\",\n  \"index\": 4799.633989472398,\n  \"listIds\": [\n    \"4026ab77-5b3e-42f3-dac0-44a021ea8c9e\",\n    \"01bedbe1-72f4-edc7-cab8-1a2e9805332e\"\n  ],\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"string\",\n  \"assigneesIds\": [\n    \"f769c574-390c-b274-d47b-d4978bcf4cca\"\n  ],\n  \"fields\": [\n    {\n      \"fieldTemplateId\": \"8c4de239-3044-c36c-2aa1-c27007aaff7d\",\n      \"value\": \"string\",\n      \"date\": \"2007-06-28T00:31:22.325Z\",\n      \"labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"linkedTasks\": [\n        {\n          \"id\": \"6dba8744-7c81-2096-93d3-ce41b501cf82\",\n          \"index\": 9861.078624205857\n        },\n        {\n          \"id\": \"1c1ef37f-b096-48e4-40a2-8ce69d275d6d\",\n          \"index\": 4842.49831271911\n        }\n      ]\n    },\n    {\n      \"fieldTemplateId\": \"2f42504d-a48b-aebf-a568-c0594ec19fe6\",\n      \"value\": \"string\",\n      \"date\": \"1996-11-01T01:51:53.694Z\",\n      \"labels\": [\n        \"string\",\n        \"string\"\n      ],\n      \"linkedTasks\": [\n        {\n          \"id\": \"d006f7dc-ab8c-f3fa-09f8-df6c2a64559c\",\n          \"index\": 9545.545065110882\n        },\n        {\n          \"id\": \"27bdc1f9-70d5-c689-30c1-2995ddfbe066\",\n          \"index\": 4775.436937775472\n        }\n      ]\n    }\n  ],\n  \"deleted\": true,\n  \"deletedAt\": \"1992-12-17T04:08:44.737Z\",\n  \"deletedByUserId\": \"1c91eb99-2ad7-777c-4856-20f33fc65375\",\n  \"completed\": false,\n  \"completedAt\": \"1966-06-12T07:33:59.132Z\",\n  \"createdAt\": \"1966-05-14T23:49:47.544Z\",\n  \"createdUserId\": \"d9ddd876-5ab1-ae4b-8871-d34653b78fa9\",\n  \"lastActivityAt\": \"1991-01-30T02:40:59.682Z\",\n  \"url\": \"string\",\n  \"trashedAt\": \"1958-08-22T15:49:05.760Z\",\n  \"trashedByUserId\": \"f284fd80-c00c-2a16-9fc0-2966e941060d\",\n  \"parentTaskId\": \"75f8346f-938d-93d7-a6dc-fa8e5a4b4d7f\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ba2c364-58c6-4f0f-bd75-0fcef6a538e5",
+          "name": "Get a task form",
+          "request": {
+            "name": "Get a task form",
+            "description": {},
+            "url": {
+              "path": [
+                "taskForms",
+                ":urlKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "keyType",
+                  "value": "<string>",
+                  "description": "One of key or urlKey, defaulting to id"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Array of task form includes"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Array of task form includes"
+                },
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "draft",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "urlKey",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15d582d5-6307-4813-a542-69178c8f1f5b",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "taskForms",
+                    ":urlKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "keyType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "draft",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "urlKey",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c91896fb-cb00-4122-9e13-5ea3f760f3a4\",\n  \"model\": \"taskForm\",\n  \"version\": 2,\n  \"key\": \"JfsPVS9NxJ\",\n  \"urlKey\": \"ryNw67fFHJCd\",\n  \"url\": \"https://height.app/u28gpe10d5/?taskForm=Task-submission-ryNw67fFHJCd\",\n  \"name\": \"Task submission\",\n  \"taskFormDescription\": \"\",\n  \"disabledReason\": null,\n  \"archived\": false,\n  \"draft\": false,\n  \"publicAccess\": \"readonly\",\n  \"listIds\": [\n    \"baa40cc6-240f-4df2-a01b-22476876d61e\"\n  ],\n  \"parentTaskId\": null,\n  \"status\": \"string\",\n  \"questions\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.height.app",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1e555f07-64fc-445e-9500-5cafe7faeab4",
+    "name": "Height APP Activities Task Forms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unofficial Open API 3.1 specification for [Height App API](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). This is not affiliated with Height team.\n\n---\n# Authentication\n\nThe Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.\n\nAuthentication to the API is performed via the `Authorization` header. All API requests should be made over HTTPs.\n\ni.e. Get your workspace.\n\n```bash\ncurl https://api.height.app/workspace \\\n  -H \"Authorization: api-key secret_1234\"\n```\n\nThird-party applications must connect to the Height API using [OAuth2](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). \n\nSee [OAuth Apps on Height](https://www.notion.so/OAuth-Apps-on-Height-a8ebeab3f3f047e3857bd8ce60c2f640) for more information.\n\n# Object formats\n\nAll objects have a unique `id` ([UUID v4](https://en.m.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random))) and a `model` attribute to distinguish the model type.\n\ne.g. a task object.\n\n```json\n{\n  \"id\": \"123e4567-e89b-12d3-a456-426655440000\",\n  \"model\": \"task\",\n  \"name\": \"Fix bug\",\n  \"index\": 1,\n  \"status\": \"backLog\",\n  [...]\n}\n```\n\n# Date formats\n\nEvery date uses the ISO format e.g.\n\n```js\n\"2019-11-07T17:00:00.000Z\"\n```\n\n# Real-time\n\nAny change that you make to the API will be pushed to every user in real-time: i.e. creating tasks or messages.\n\n# Rate limits\n\nTo keep incoming traffic under control and maintain a great experience for all our users, our API is behind a rate limiter. Users who send many requests in quick succession may see error responses that show up as status code 429.\n\nHeight allows up to 120 requests/min, but we have stricter limits on these endpoints:\n\n- `POST /activities`: 60 requests/min\n- `POST /tasks`: 60 requests/min\n\nContact Support:\n Email: gil@beomjun.kr",
+      "type": "text/plain"
+    }
+  }
+}

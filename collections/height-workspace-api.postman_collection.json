@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "2219201a-7645-42df-a25a-65c006c0aa63",
+      "name": "Workspace",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b7f61dd-6e9a-42d0-9399-e3381851f9e1",
+          "name": "Retrieve the workspace",
+          "request": {
+            "name": "Retrieve the workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "workspace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d886e0a-7d13-4079-9760-6741c1808c7e",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5a5e8d3f-c2ff-4a7a-aba4-4f22b19c5369\",\n  \"model\": \"workspace\",\n  \"name\": \"Acme\",\n  \"url\": \"https://acme.height.app\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.height.app",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "39f51a61-4d55-419a-a044-81b64f00a6ef",
+    "name": "Height APP Activities Workspace API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unofficial Open API 3.1 specification for [Height App API](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). This is not affiliated with Height team.\n\n---\n# Authentication\n\nThe Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.\n\nAuthentication to the API is performed via the `Authorization` header. All API requests should be made over HTTPs.\n\ni.e. Get your workspace.\n\n```bash\ncurl https://api.height.app/workspace \\\n  -H \"Authorization: api-key secret_1234\"\n```\n\nThird-party applications must connect to the Height API using [OAuth2](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). \n\nSee [OAuth Apps on Height](https://www.notion.so/OAuth-Apps-on-Height-a8ebeab3f3f047e3857bd8ce60c2f640) for more information.\n\n# Object formats\n\nAll objects have a unique `id` ([UUID v4](https://en.m.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random))) and a `model` attribute to distinguish the model type.\n\ne.g. a task object.\n\n```json\n{\n  \"id\": \"123e4567-e89b-12d3-a456-426655440000\",\n  \"model\": \"task\",\n  \"name\": \"Fix bug\",\n  \"index\": 1,\n  \"status\": \"backLog\",\n  [...]\n}\n```\n\n# Date formats\n\nEvery date uses the ISO format e.g.\n\n```js\n\"2019-11-07T17:00:00.000Z\"\n```\n\n# Real-time\n\nAny change that you make to the API will be pushed to every user in real-time: i.e. creating tasks or messages.\n\n# Rate limits\n\nTo keep incoming traffic under control and maintain a great experience for all our users, our API is behind a rate limiter. Users who send many requests in quick succession may see error responses that show up as status code 429.\n\nHeight allows up to 120 requests/min, but we have stricter limits on these endpoints:\n\n- `POST /activities`: 60 requests/min\n- `POST /tasks`: 60 requests/min\n\nContact Support:\n Email: gil@beomjun.kr",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Height APP Activities API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List activities and messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.height.app/activities",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "query",
+                "description": "Either the task unique `id` (UUID), or the task unique `index` (the 123 of T-123)."
+              }
+            ]
+          },
+          "docs": "List activities and messages"
+        },
+        {
+          "info": {
+            "name": "Post a message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.height.app/activities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a message"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

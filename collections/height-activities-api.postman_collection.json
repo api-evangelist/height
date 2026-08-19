@@ -1,0 +1,232 @@
+{
+  "item": [
+    {
+      "id": "e01bb3b8-93fd-4e73-b709-07aa95ce326d",
+      "name": "Activities",
+      "description": {
+        "content": "Activities can be messages, status updates of the task or integration updates (i.e. GitHub).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccea2e5a-cf86-48e1-b93e-d65eebdf3625",
+          "name": "Post a message",
+          "request": {
+            "name": "Post a message",
+            "description": {},
+            "url": {
+              "path": [
+                "activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskId\": \"<uuid>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2ad8e04-e9ce-44d9-90fc-f1f1c0293339",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskId\": \"<uuid>\",\n  \"type\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c55a81d7-2758-3dff-7831-67f3ad1b59f6\",\n  \"model\": \"string\",\n  \"createdAt\": \"1996-10-03T16:44:45.453Z\",\n  \"taskId\": \"ecf44b27-2a2c-781e-71c7-f7c8b3d912b3\",\n  \"createdUserId\": \"1f8e30c0-3ccd-ec70-b29d-83a997244995\",\n  \"type\": \"nameChange\",\n  \"reactjis\": [\n    {\n      \"id\": \"e2f1609b-bea7-7aa6-5fdb-0d39b9b39c77\",\n      \"model\": \"string\",\n      \"emoji\": \"string\",\n      \"userId\": \"dcfe90dc-ad61-360e-831e-7127a24960c6\",\n      \"activityId\": \"ed966263-449c-cf16-3475-9175ea5ca530\"\n    },\n    {\n      \"id\": \"ed02a8bd-d26f-c822-da3a-4320175abfb3\",\n      \"model\": \"string\",\n      \"emoji\": \"string\",\n      \"userId\": \"ee320c52-2dd0-aa8a-eec8-39718ee663b9\",\n      \"activityId\": \"4ee7c7c1-49f9-ae05-121f-1c351ea55774\"\n    }\n  ],\n  \"readUserIds\": [\n    \"95796787-0787-20ae-697e-fe0ed405c7d6\",\n    \"49d7c9f6-d560-568f-a969-df86fc284075\"\n  ],\n  \"url\": \"string\",\n  \"message\": \"string\",\n  \"oldValue\": \"string\",\n  \"newValue\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de8a466f-6d35-4b4a-9f10-8b50bd88242a",
+          "name": "List activities and messages",
+          "request": {
+            "name": "List activities and messages",
+            "description": {},
+            "url": {
+              "path": [
+                "activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "taskId",
+                  "value": "<uuid>",
+                  "description": "Either the task unique `id` (UUID), or the task unique `index` (the 123 of T-123)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b28076da-8a67-4805-b157-77e84ad57e48",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskId",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"list\": [\n    {\n      \"id\": \"eacff3c4-b9e2-a53f-fb73-b13a982602db\",\n      \"model\": \"string\",\n      \"createdAt\": \"1949-03-04T09:58:38.911Z\",\n      \"taskId\": \"c6f9348e-769c-c747-774b-fe8de6df0a68\",\n      \"createdUserId\": \"38b5f14e-972c-ea80-24d2-a95a1023a144\",\n      \"type\": \"listsChange\",\n      \"reactjis\": [\n        {\n          \"id\": \"8aea5a04-0191-e07c-7019-4f58a1557773\",\n          \"model\": \"string\",\n          \"emoji\": \"string\",\n          \"userId\": \"c490a172-4d35-cf46-5aaf-5c9dafb3bd36\",\n          \"activityId\": \"8d391ca2-d075-1285-20ea-4d4a11a64cf6\"\n        },\n        {\n          \"id\": \"93d40d22-c299-589e-fb26-20d2d5a61e98\",\n          \"model\": \"string\",\n          \"emoji\": \"string\",\n          \"userId\": \"5cf84240-f81f-38f4-a7ef-bef9925fa7d5\",\n          \"activityId\": \"51589221-8a54-8d26-53a3-5316729195eb\"\n        }\n      ],\n      \"readUserIds\": [\n        \"a2fde95a-c194-8bb2-e357-480d42d06f50\",\n        \"298e82b7-f9dc-97da-299d-fb205dbcd764\"\n      ],\n      \"url\": \"string\",\n      \"message\": \"string\",\n      \"oldValue\": \"string\",\n      \"newValue\": \"string\"\n    },\n    {\n      \"id\": \"b9c74eaa-0526-d6e5-4ab3-cfa8dabd57da\",\n      \"model\": \"string\",\n      \"createdAt\": \"2012-09-09T13:10:35.499Z\",\n      \"taskId\": \"f0a1d418-5dfb-6887-3435-effd3be55db5\",\n      \"createdUserId\": \"c953f8e0-afc2-1a4b-0b28-bbe51a9d32fc\",\n      \"type\": \"description\",\n      \"reactjis\": [\n        {\n          \"id\": \"0d185f27-16a8-0e8f-6e09-44ac34c9d8e5\",\n          \"model\": \"string\",\n          \"emoji\": \"string\",\n          \"userId\": \"e00f2972-a43a-31b4-0634-4b14b8e56ad8\",\n          \"activityId\": \"a9f42c92-ef26-488f-a902-3db640f1955d\"\n        },\n        {\n          \"id\": \"7af6153c-2959-19b5-f143-5a152be170f5\",\n          \"model\": \"string\",\n          \"emoji\": \"string\",\n          \"userId\": \"22d7f30c-0b57-c7de-786c-1eaf2437a388\",\n          \"activityId\": \"98f691d9-be79-35dd-77fa-962caead1de4\"\n        }\n      ],\n      \"readUserIds\": [\n        \"7697139e-1ac2-f379-b38c-adfdce15393b\",\n        \"e9e4eff7-8f57-e052-613b-78f8f943e4d1\"\n      ],\n      \"url\": \"string\",\n      \"message\": \"string\",\n      \"oldValue\": \"string\",\n      \"newValue\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.height.app",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6767d3f4-6028-4d50-94ca-ae1d58f931a6",
+    "name": "Height APP Activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Unofficial Open API 3.1 specification for [Height App API](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). This is not affiliated with Height team.\n\n---\n# Authentication\n\nThe Height API uses API keys to authenticate requests. **You can view your API key in the Height settings under API**.\n\nAuthentication to the API is performed via the `Authorization` header. All API requests should be made over HTTPs.\n\ni.e. Get your workspace.\n\n```bash\ncurl https://api.height.app/workspace \\\n  -H \"Authorization: api-key secret_1234\"\n```\n\nThird-party applications must connect to the Height API using [OAuth2](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda). \n\nSee [OAuth Apps on Height](https://www.notion.so/OAuth-Apps-on-Height-a8ebeab3f3f047e3857bd8ce60c2f640) for more information.\n\n# Object formats\n\nAll objects have a unique `id` ([UUID v4](https://en.m.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random))) and a `model` attribute to distinguish the model type.\n\ne.g. a task object.\n\n```json\n{\n  \"id\": \"123e4567-e89b-12d3-a456-426655440000\",\n  \"model\": \"task\",\n  \"name\": \"Fix bug\",\n  \"index\": 1,\n  \"status\": \"backLog\",\n  [...]\n}\n```\n\n# Date formats\n\nEvery date uses the ISO format e.g.\n\n```js\n\"2019-11-07T17:00:00.000Z\"\n```\n\n# Real-time\n\nAny change that you make to the API will be pushed to every user in real-time: i.e. creating tasks or messages.\n\n# Rate limits\n\nTo keep incoming traffic under control and maintain a great experience for all our users, our API is behind a rate limiter. Users who send many requests in quick succession may see error responses that show up as status code 429.\n\nHeight allows up to 120 requests/min, but we have stricter limits on these endpoints:\n\n- `POST /activities`: 60 requests/min\n- `POST /tasks`: 60 requests/min\n\nContact Support:\n Email: gil@beomjun.kr",
+      "type": "text/plain"
+    }
+  }
+}
