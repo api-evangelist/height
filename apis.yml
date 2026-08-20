@@ -35,6 +35,13 @@ tags:
   - Task Management
   - Collaboration
   - Productivity
+  - Workflow-Automation
+  - Artificial Intelligence
+tags_raw:
+  - Project Management
+  - Task Management
+  - Collaboration
+  - Productivity
   - Workflow Automation
   - AI
 apis:
@@ -69,6 +76,8 @@ apis:
   humanURL: https://height.app/product/api
   baseURL: https://api.height.app
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -83,6 +92,8 @@ apis:
   humanURL: https://height.app/product/api
   baseURL: https://api.height.app
   tags:
+  - List
+  tags_raw:
   - Lists
   properties:
   - type: OpenAPI
@@ -119,6 +130,8 @@ apis:
   humanURL: https://height.app/product/api
   baseURL: https://api.height.app
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -131,6 +144,8 @@ apis:
   humanURL: https://height.app/product/api
   baseURL: https://api.height.app
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
