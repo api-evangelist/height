@@ -1,15 +1,7 @@
 {
   "provider": "height",
   "sources": [
-    "height-activities-api-openapi.yml",
-    "height-field-templates-api-openapi.yml",
-    "height-groups-api-openapi.yml",
-    "height-lists-api-openapi.yml",
-    "height-security-log-events-api-openapi.yml",
-    "height-task-forms-api-openapi.yml",
-    "height-tasks-api-openapi.yml",
-    "height-users-api-openapi.yml",
-    "height-workspace-api-openapi.yml"
+    "_original/height-height-api-openapi.yml"
   ],
   "outputs": [
     "height-activities-api-openapi.yml",
@@ -25,6 +17,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "height-height-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "height-height-api-openapi.yml: declared missing tag: Field Templates",
+    "height-height-api-openapi.yml: declared missing tag: Security Log Events",
+    "height-height-api-openapi.yml: declared missing tag: Task Forms",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "height-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "height-field-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "height-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "height-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "height-security-log-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "height-task-forms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "height-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "height-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "height-workspace-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
