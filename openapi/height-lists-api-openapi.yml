@@ -97,10 +97,67 @@ paths:
                 $ref: '#/components/schemas/ListObject'
 components:
   schemas:
-    CreateListRequest:
-      oneOf:
-      - $ref: '#/components/schemas/CreateNormalListRequest'
-      - $ref: '#/components/schemas/CreateSmartListRequest'
+    ListObject:
+      type: object
+      description: Tasks belong to one list. To create tasks, it's necessary to know in which list you want to create them.
+      required:
+      - id
+      - model
+      - type
+      - key
+      - description
+      - url
+      - appearance
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique id of the list (UUIDv4)
+        model:
+          type: string
+          example: list
+          enum:
+          - list
+          description: The model is always `list`
+        type:
+          type: string
+          description: '- `list`: a list that contains tasks. You can only create tasks in this type of list directly.
+
+            - `smartlist`: a smart list use filters to find tasks across different lists
+
+            - `user`: a special smart list that displays tasks assigned to a user
+
+            - `inbox`: a special smart list to display recent conversations
+
+            - `search`: a special smart list to search tasks'
+          enum:
+          - list
+          - smartlist
+          - user
+          - inbox
+          - search
+        key:
+          type: string
+          description: "The unique key of your list is used as their url.\n\nIf the key is `general`, the url will be: `https://your-workspace.height.app/general`\n\nKeys need to respect these rules: \n\n- valid characters are: lower-case letters, dashes and numbers\n- needs to start with a lower-case letter\n- key is unique across the workspace"
+        description:
+          type: string
+          description: The description of the list. It can be an empty string.
+        url:
+          type: string
+          description: The url of the list.
+        appearance:
+          type: object
+          required:
+          - iconUrl
+          properties:
+            iconUrl:
+              type: string
+              description: URL of the list icon
+            hue:
+              type:
+              - 'null'
+              - number
+              description: 'hue of the list color '
     UpdateListRequest:
       type: object
       properties:
@@ -189,18 +246,13 @@ components:
           enum:
           - list
           - kanban
+    CreateListRequest:
+      oneOf:
+      - $ref: '#/components/schemas/CreateNormalListRequest'
+      - $ref: '#/components/schemas/CreateSmartListRequest'
     FiltersObject:
       type: object
       description: See FiltersObject.ts
-    ListAllResponse:
-      type: object
-      required:
-      - lists
-      properties:
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListObject'
     CreateSmartListRequest:
       type: object
       description: Create a smartlist
@@ -262,67 +314,15 @@ components:
           enum:
           - list
           - kanban
-    ListObject:
+    ListAllResponse:
       type: object
-      description: Tasks belong to one list. To create tasks, it's necessary to know in which list you want to create them.
       required:
-      - id
-      - model
-      - type
-      - key
-      - description
-      - url
-      - appearance
+      - lists
       properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique id of the list (UUIDv4)
-        model:
-          type: string
-          example: list
-          enum:
-          - list
-          description: The model is always `list`
-        type:
-          type: string
-          description: '- `list`: a list that contains tasks. You can only create tasks in this type of list directly.
-
-            - `smartlist`: a smart list use filters to find tasks across different lists
-
-            - `user`: a special smart list that displays tasks assigned to a user
-
-            - `inbox`: a special smart list to display recent conversations
-
-            - `search`: a special smart list to search tasks'
-          enum:
-          - list
-          - smartlist
-          - user
-          - inbox
-          - search
-        key:
-          type: string
-          description: "The unique key of your list is used as their url.\n\nIf the key is `general`, the url will be: `https://your-workspace.height.app/general`\n\nKeys need to respect these rules: \n\n- valid characters are: lower-case letters, dashes and numbers\n- needs to start with a lower-case letter\n- key is unique across the workspace"
-        description:
-          type: string
-          description: The description of the list. It can be an empty string.
-        url:
-          type: string
-          description: The url of the list.
-        appearance:
-          type: object
-          required:
-          - iconUrl
-          properties:
-            iconUrl:
-              type: string
-              description: URL of the list icon
-            hue:
-              type:
-              - 'null'
-              - number
-              description: 'hue of the list color '
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListObject'
   securitySchemes:
     apiKey:
       type: apiKey

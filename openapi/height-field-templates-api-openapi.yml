@@ -225,6 +225,15 @@ components:
       - name
       - type
       - archive
+    ListAllFieldTemplatesResponse:
+      type: object
+      required:
+      - list
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldTemplateObject'
     CreateFieldTemplateOptionRequest:
       type: object
       required:
@@ -235,15 +244,6 @@ components:
         hue:
           type: number
           description: number between 0 and 360 (optional)
-    ListAllFieldTemplatesResponse:
-      type: object
-      required:
-      - list
-      properties:
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldTemplateObject'
     UpdateFieldTemplateOptionRequest:
       type: object
       required:
