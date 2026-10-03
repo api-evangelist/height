@@ -84,10 +84,6 @@ paths:
                 $ref: '#/components/schemas/UserObject'
 components:
   schemas:
-    UserObject:
-      allOf:
-      - $ref: '#/components/schemas/EnabledUserObject'
-      - $ref: '#/components/schemas/InvitedUserObject'
     ListAllUsersResponse:
       type: object
       properties:
@@ -201,6 +197,10 @@ components:
       - email
       - access
       - createdAt
+    UserObject:
+      allOf:
+      - $ref: '#/components/schemas/EnabledUserObject'
+      - $ref: '#/components/schemas/InvitedUserObject'
   securitySchemes:
     apiKey:
       type: apiKey

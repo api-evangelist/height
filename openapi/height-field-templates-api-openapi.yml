@@ -115,6 +115,28 @@ paths:
                 $ref: '#/components/schemas/FieldTemplateObject'
 components:
   schemas:
+    UpdateFieldTemplateOptionRequest:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: string
+        hue:
+          type: number
+          description: number between 0 and 360 (optional)
+        deleted:
+          type: boolean
+    CreateFieldTemplateOptionRequest:
+      type: object
+      required:
+      - value
+      properties:
+        value:
+          type: string
+        hue:
+          type: number
+          description: number between 0 and 360 (optional)
     FieldTemplateObject:
       type: object
       properties:
@@ -234,28 +256,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FieldTemplateObject'
-    CreateFieldTemplateOptionRequest:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          type: string
-        hue:
-          type: number
-          description: number between 0 and 360 (optional)
-    UpdateFieldTemplateOptionRequest:
-      type: object
-      required:
-      - value
-      properties:
-        value:
-          type: string
-        hue:
-          type: number
-          description: number between 0 and 360 (optional)
-        deleted:
-          type: boolean
   securitySchemes:
     apiKey:
       type: apiKey

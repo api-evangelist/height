@@ -70,6 +70,15 @@ paths:
                 $ref: '#/components/schemas/ListActivitiesResponse'
 components:
   schemas:
+    ListActivitiesResponse:
+      type: object
+      required:
+      - list
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityObject'
     PostMessageRequest:
       type: object
       required:
@@ -103,15 +112,6 @@ components:
 
 
             List mention: `#<listKey>`'
-    ListActivitiesResponse:
-      type: object
-      required:
-      - list
-      properties:
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActivityObject'
     ActivityObject:
       type: object
       required:
