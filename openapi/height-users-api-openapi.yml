@@ -84,14 +84,6 @@ paths:
                 $ref: '#/components/schemas/UserObject'
 components:
   schemas:
-    ListAllUsersResponse:
-      type: object
-      properties:
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserObject'
-          description: The list of users.
     EnabledUserObject:
       type: object
       properties:
@@ -201,6 +193,14 @@ components:
       allOf:
       - $ref: '#/components/schemas/EnabledUserObject'
       - $ref: '#/components/schemas/InvitedUserObject'
+    ListAllUsersResponse:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserObject'
+          description: The list of users.
   securitySchemes:
     apiKey:
       type: apiKey

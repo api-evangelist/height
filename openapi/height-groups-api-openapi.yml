@@ -37,13 +37,6 @@ paths:
                 $ref: '#/components/schemas/ListAllGroupsResponse'
 components:
   schemas:
-    ListAllGroupsResponse:
-      type: object
-      properties:
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupObject'
     GroupObject:
       type: object
       properties:
@@ -82,6 +75,13 @@ components:
       - hue
       - userIds
       - archived
+    ListAllGroupsResponse:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupObject'
   securitySchemes:
     apiKey:
       type: apiKey

@@ -97,52 +97,6 @@ paths:
                 $ref: '#/components/schemas/ListObject'
 components:
   schemas:
-    CreateListRequest:
-      oneOf:
-      - $ref: '#/components/schemas/CreateNormalListRequest'
-      - $ref: '#/components/schemas/CreateSmartListRequest'
-    ListAllResponse:
-      type: object
-      required:
-      - lists
-      properties:
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ListObject'
-    FiltersObject:
-      type: object
-      description: See FiltersObject.ts
-    UpdateListRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        appearance:
-          type: object
-          properties:
-            icon:
-              type: string
-              description: the name of the icon e.g. listCircles, listBug.
-            hue:
-              type: number
-          required:
-          - icon
-        visualization:
-          type: string
-          enum:
-          - list
-          - kanban
-          - calendar
-          - gantt
-          - conversation
-          - figma
-        archivedAt:
-          type: string
-          description: string representing a date the list was archived at, in the form of an ISO 8601 date (e.g. 2011-04-11T10:20:30Z).
-          format: date-time
     ListObject:
       type: object
       description: Tasks belong to one list. To create tasks, it's necessary to know in which list you want to create them.
@@ -204,6 +158,80 @@ components:
               - 'null'
               - number
               description: 'hue of the list color '
+    ListAllResponse:
+      type: object
+      required:
+      - lists
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListObject'
+    FiltersObject:
+      type: object
+      description: See FiltersObject.ts
+    CreateListRequest:
+      oneOf:
+      - $ref: '#/components/schemas/CreateNormalListRequest'
+      - $ref: '#/components/schemas/CreateSmartListRequest'
+    CreateNormalListRequest:
+      type: object
+      description: Create a list
+      required:
+      - name
+      - type
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - list
+          - smartlist
+        description:
+          type: string
+        appearance:
+          type: object
+          required:
+          - icon
+          properties:
+            icon:
+              type: string
+              enum:
+              - list
+              - listCircles
+              - listTriangle
+              - listSquare
+              - listLines
+              - listRectangles
+              - listCircle
+              - listRocket
+              - listMushroom
+              - listBolt
+              - listBug
+              - listFlower
+              - listThumbsUp
+              - listTarget
+              - listSparkle
+              - listMedal
+              - listFlag
+            hue:
+              description: 'Hue is between 0 and 360 and used to determine the color.
+
+
+                If `null`, the list has no color.'
+              type:
+              - 'null'
+              - number
+              minimum: 0
+              maximum: 360
+        visualization:
+          description: visualization string (optional, default = list) list or kanban
+          default: list
+          type: string
+          enum:
+          - list
+          - kanban
     CreateSmartListRequest:
       type: object
       description: Create a smartlist
@@ -265,64 +293,36 @@ components:
           enum:
           - list
           - kanban
-    CreateNormalListRequest:
+    UpdateListRequest:
       type: object
-      description: Create a list
-      required:
-      - name
-      - type
       properties:
         name:
           type: string
-        type:
-          type: string
-          enum:
-          - list
-          - smartlist
         description:
           type: string
         appearance:
           type: object
-          required:
-          - icon
           properties:
             icon:
               type: string
-              enum:
-              - list
-              - listCircles
-              - listTriangle
-              - listSquare
-              - listLines
-              - listRectangles
-              - listCircle
-              - listRocket
-              - listMushroom
-              - listBolt
-              - listBug
-              - listFlower
-              - listThumbsUp
-              - listTarget
-              - listSparkle
-              - listMedal
-              - listFlag
+              description: the name of the icon e.g. listCircles, listBug.
             hue:
-              description: 'Hue is between 0 and 360 and used to determine the color.
-
-
-                If `null`, the list has no color.'
-              type:
-              - 'null'
-              - number
-              minimum: 0
-              maximum: 360
+              type: number
+          required:
+          - icon
         visualization:
-          description: visualization string (optional, default = list) list or kanban
-          default: list
           type: string
           enum:
           - list
           - kanban
+          - calendar
+          - gantt
+          - conversation
+          - figma
+        archivedAt:
+          type: string
+          description: string representing a date the list was archived at, in the form of an ISO 8601 date (e.g. 2011-04-11T10:20:30Z).
+          format: date-time
   securitySchemes:
     apiKey:
       type: apiKey
