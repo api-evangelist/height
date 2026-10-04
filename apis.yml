@@ -51,6 +51,7 @@ tags:
   - Productivity
   - Workflow Automation
   - Artificial Intelligence
+  - Defunct
 tags_raw:
   - Project Management
   - Task Management
@@ -59,6 +60,7 @@ tags_raw:
   - Workflow Automation
   - AI
   - Workflow-Automation
+  - Defunct
 apis:
 - aid: height:height-activities-api
   name: Height Activities API
@@ -180,6 +182,9 @@ apis:
   - type: Documentation
     url: https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda
 common:
+  - type: CapabilityMap
+    url: capabilities/height-capability-edges.yml
+    name: Height Business Capability Map
   - type: AgenticAccess
     url: agentic-access/height-agentic-access.yml
   - type: DomainSecurity
