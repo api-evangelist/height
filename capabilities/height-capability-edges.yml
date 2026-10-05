@@ -1,0 +1,25 @@
+slug: height
+provider: Height
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Tasks
+  spec_file: height-tasks-api-openapi.yml
+  capability_id: BC-900.30
+  capability_id_l1: BC-900
+  capability_name: Project Management
+  confidence: 0.85
+  evidence: POST /tasks  createTask  Create a task; PATCH /tasks/:id  updateTask; PatchTasksAssigneesEffect,
+    PatchTasksStatusEffect
+  reason: Create/update/search/move of tasks with assignees, status and parent-task hierarchy is the core
+    of project execution, planning and tracking in a collaborative project management tool.
