@@ -70,6 +70,15 @@ paths:
                 $ref: '#/components/schemas/ListActivitiesResponse'
 components:
   schemas:
+    ListActivitiesResponse:
+      type: object
+      required:
+      - list
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityObject'
     PostMessageRequest:
       type: object
       required:
@@ -191,15 +200,6 @@ components:
         url:
           type: string
           description: The url of the activity.
-    ListActivitiesResponse:
-      type: object
-      required:
-      - list
-      properties:
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActivityObject'
   securitySchemes:
     apiKey:
       type: apiKey

@@ -211,26 +211,6 @@ paths:
           description: Successful operation
 components:
   schemas:
-    PatchTasksOutOfTrashEffect:
-      type: object
-      description: Move task out of the trash
-      required:
-      - type
-      - trashState
-      - trashStateEffectAt
-      properties:
-        type:
-          type: string
-          enum:
-          - trashState
-        trashState:
-          type: string
-          enum:
-          - active
-        trashStateEffectAt:
-          type: string
-          format: date-time
-          description: ISO 8601 date-time
     PatchTasksAssigneesEffect:
       type: object
       description: Update assignees
@@ -258,105 +238,61 @@ components:
                   type: string
                   format: uuid
           description: An array of UUIDs of the users assigned to the task (optional).
-    PatchTasksNameEffect:
+    PatchTasksDeletedEffect:
       type: object
-      description: Update name
+      description: Update deleted
       required:
       - type
-      - name
+      - deleted
       properties:
         type:
           type: string
           enum:
-          - name
-        name:
-          type: string
-    PatchTasksMoveToTrashEffect:
+          - deleted
+        deleted:
+          type: boolean
+    PatchTasksListsEffect:
       type: object
-      description: Move trash to the task
-      required:
-      - type
-      - trashState
-      - trashStateEffectAt
+      description: Update lists
       properties:
         type:
           type: string
           enum:
-          - trashState
-        trashState:
-          type: string
-          enum:
-          - trash
-        trashStateEffectAt:
-          type: string
-          format: date-time
-          description: ISO 8601 date-time
-    PatchTasksStatusEffect:
-      type: object
-      description: Update status
-      required:
-      - type
-      - status
-      properties:
-        type:
-          type: string
-          enum:
-          - status
-        status:
-          description: 'The status of the task.
-
-            - `backLog`
-
-            - `inProgress`
-
-            - `done`
-
-            - and any *UUID* of available statuses. You can find the *UUIDs* through the field template API.'
-          type: string
-        completedAt:
-          type: string
-          format: date-time
-          description: ISO 8601 date-time
-    PatchTasksRequest:
-      type: object
-      description: Patch multiples tasks
-      properties:
-        patches:
+          - lists
+        listIds:
           type: array
           items:
             type: object
-            required:
-            - taskIds
-            - effects
             properties:
-              taskIds:
+              add:
                 type: array
-                description: Array of task ids, either UUIDs or task numbers
                 items:
                   type: string
                   format: uuid
-              effects:
+              remove:
                 type: array
                 items:
-                  oneOf:
-                  - $ref: '#/components/schemas/PatchTasksNameEffect'
-                  - $ref: '#/components/schemas/PatchTasksDescriptionEffect'
-                  - $ref: '#/components/schemas/PatchTasksStatusEffect'
-                  - $ref: '#/components/schemas/PatchTasksDeletedEffect'
-                  - $ref: '#/components/schemas/PatchTasksParentTaskEffect'
-                  - $ref: '#/components/schemas/PatchTasksAssigneesEffect'
-                  - $ref: '#/components/schemas/PatchTasksListsEffect'
-                  - $ref: '#/components/schemas/PatchTasksFieldsEffect'
-                  - $ref: '#/components/schemas/PatchTasksMoveToTrashEffect'
-                  - $ref: '#/components/schemas/PatchTasksOutOfTrashEffect'
-    PatchTasksResponse:
+                  type: string
+                  format: uuid
+          description: An array of UUIDs
+    PatchTasksDescriptionEffect:
       type: object
+      description: Update description
+      required:
+      - type
+      - description
       properties:
-        list:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/TaskObject'
+        type:
+          type: string
+          enum:
+          - description
+        description:
+          type: object
+          required:
+          - message
+          properties:
+            message:
+              type: string
     MoveTasksRequest:
       type: object
       properties:
@@ -387,43 +323,6 @@ components:
       - taskIds
       - sourceId
       - orderIntent
-    SearchTasksResponse:
-      type: object
-      properties:
-        list:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/TaskObject'
-    PatchTasksParentTaskEffect:
-      type: object
-      description: Update parent task
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - parentTask
-        parentTaskId:
-          type:
-          - 'null'
-          - string
-          format: uuid
-          description: The UUID of the parent task (optional).
-    PatchTasksDeletedEffect:
-      type: object
-      description: Update deleted
-      required:
-      - type
-      - deleted
-      properties:
-        type:
-          type: string
-          enum:
-          - deleted
-        deleted:
-          type: boolean
     UpdateTaskRequest:
       type: object
       properties:
@@ -569,169 +468,6 @@ components:
               type: string
               format: uuid
               description: (only used for before and after intent)
-    PatchTasksDescriptionEffect:
-      type: object
-      description: Update description
-      required:
-      - type
-      - description
-      properties:
-        type:
-          type: string
-          enum:
-          - description
-        description:
-          type: object
-          required:
-          - message
-          properties:
-            message:
-              type: string
-    PatchTasksFieldsEffect:
-      type: object
-      description: Update fields
-      required:
-      - type
-      - fieldTemplateId
-      - field
-      properties:
-        type:
-          type: string
-          enum:
-          - fields
-        fieldTemplateId:
-          type: string
-          format: uuid
-        field:
-          type: object
-          properties:
-            text:
-              type:
-              - 'null'
-              - string
-              description: The value of the field when the template type is text.
-            date:
-              type:
-              - 'null'
-              - string
-              format: date-time
-              description: The value of the field when the template type is date.
-            recursion:
-              type:
-              - 'null'
-              - object
-              description: 'recursion
-
-                Untyped. Should be documented in [original docs](https://www.notion.so/Update-tasks-53d72cb0059a4e0e81cc2fcbfcbf9d0a)'
-            label:
-              type: object
-              description: The label value of the field when the template type is select.
-              properties:
-                optionId:
-                  type: string
-                  format: uuid
-            labels:
-              type: object
-              description: The label values of the field when the template type is labels.
-              properties:
-                add:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                        description: The ID for the label to add.
-                    required:
-                    - id
-                remove:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                        description: The ID for the label to remove.
-                    required:
-                    - id
-            linkedTasks:
-              type: object
-              description: The linked tasks value of the field when the template type is linkedTask or reverseLinkedTask.
-              properties:
-                add:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                        description: The ID for the task to add.
-                      index:
-                        type: integer
-                        description: The index for the task to add.
-                    required:
-                    - id
-                remove:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                        description: The ID for the task to remove.
-                      index:
-                        type: integer
-                        description: The index for the task to remove.
-                    required:
-                    - id
-        userIds:
-          type: object
-          description: The user IDs of the field when the template type is users.
-          properties:
-            add:
-              type: array
-              items:
-                type: string
-                format: uuid
-                description: The user ID to add.
-              required:
-              - id
-            remove:
-              type: array
-              items:
-                type: string
-                format: uuid
-                description: The user ID to remove.
-              required:
-              - id
-    PatchTasksListsEffect:
-      type: object
-      description: Update lists
-      properties:
-        type:
-          type: string
-          enum:
-          - lists
-        listIds:
-          type: array
-          items:
-            type: object
-            properties:
-              add:
-                type: array
-                items:
-                  type: string
-                  format: uuid
-              remove:
-                type: array
-                items:
-                  type: string
-                  format: uuid
-          description: An array of UUIDs
     TaskObject:
       type: object
       required:
@@ -873,6 +609,270 @@ components:
           type: string
           format: uuid
           description: If the task is a subtask of another task, `parentTaskId` will be the id of the parent task.
+    PatchTasksNameEffect:
+      type: object
+      description: Update name
+      required:
+      - type
+      - name
+      properties:
+        type:
+          type: string
+          enum:
+          - name
+        name:
+          type: string
+    PatchTasksMoveToTrashEffect:
+      type: object
+      description: Move trash to the task
+      required:
+      - type
+      - trashState
+      - trashStateEffectAt
+      properties:
+        type:
+          type: string
+          enum:
+          - trashState
+        trashState:
+          type: string
+          enum:
+          - trash
+        trashStateEffectAt:
+          type: string
+          format: date-time
+          description: ISO 8601 date-time
+    PatchTasksParentTaskEffect:
+      type: object
+      description: Update parent task
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - parentTask
+        parentTaskId:
+          type:
+          - 'null'
+          - string
+          format: uuid
+          description: The UUID of the parent task (optional).
+    PatchTasksStatusEffect:
+      type: object
+      description: Update status
+      required:
+      - type
+      - status
+      properties:
+        type:
+          type: string
+          enum:
+          - status
+        status:
+          description: 'The status of the task.
+
+            - `backLog`
+
+            - `inProgress`
+
+            - `done`
+
+            - and any *UUID* of available statuses. You can find the *UUIDs* through the field template API.'
+          type: string
+        completedAt:
+          type: string
+          format: date-time
+          description: ISO 8601 date-time
+    PatchTasksOutOfTrashEffect:
+      type: object
+      description: Move task out of the trash
+      required:
+      - type
+      - trashState
+      - trashStateEffectAt
+      properties:
+        type:
+          type: string
+          enum:
+          - trashState
+        trashState:
+          type: string
+          enum:
+          - active
+        trashStateEffectAt:
+          type: string
+          format: date-time
+          description: ISO 8601 date-time
+    PatchTasksFieldsEffect:
+      type: object
+      description: Update fields
+      required:
+      - type
+      - fieldTemplateId
+      - field
+      properties:
+        type:
+          type: string
+          enum:
+          - fields
+        fieldTemplateId:
+          type: string
+          format: uuid
+        field:
+          type: object
+          properties:
+            text:
+              type:
+              - 'null'
+              - string
+              description: The value of the field when the template type is text.
+            date:
+              type:
+              - 'null'
+              - string
+              format: date-time
+              description: The value of the field when the template type is date.
+            recursion:
+              type:
+              - 'null'
+              - object
+              description: 'recursion
+
+                Untyped. Should be documented in [original docs](https://www.notion.so/Update-tasks-53d72cb0059a4e0e81cc2fcbfcbf9d0a)'
+            label:
+              type: object
+              description: The label value of the field when the template type is select.
+              properties:
+                optionId:
+                  type: string
+                  format: uuid
+            labels:
+              type: object
+              description: The label values of the field when the template type is labels.
+              properties:
+                add:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: The ID for the label to add.
+                    required:
+                    - id
+                remove:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: The ID for the label to remove.
+                    required:
+                    - id
+            linkedTasks:
+              type: object
+              description: The linked tasks value of the field when the template type is linkedTask or reverseLinkedTask.
+              properties:
+                add:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: The ID for the task to add.
+                      index:
+                        type: integer
+                        description: The index for the task to add.
+                    required:
+                    - id
+                remove:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: The ID for the task to remove.
+                      index:
+                        type: integer
+                        description: The index for the task to remove.
+                    required:
+                    - id
+        userIds:
+          type: object
+          description: The user IDs of the field when the template type is users.
+          properties:
+            add:
+              type: array
+              items:
+                type: string
+                format: uuid
+                description: The user ID to add.
+              required:
+              - id
+            remove:
+              type: array
+              items:
+                type: string
+                format: uuid
+                description: The user ID to remove.
+              required:
+              - id
+    PatchTasksRequest:
+      type: object
+      description: Patch multiples tasks
+      properties:
+        patches:
+          type: array
+          items:
+            type: object
+            required:
+            - taskIds
+            - effects
+            properties:
+              taskIds:
+                type: array
+                description: Array of task ids, either UUIDs or task numbers
+                items:
+                  type: string
+                  format: uuid
+              effects:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/components/schemas/PatchTasksNameEffect'
+                  - $ref: '#/components/schemas/PatchTasksDescriptionEffect'
+                  - $ref: '#/components/schemas/PatchTasksStatusEffect'
+                  - $ref: '#/components/schemas/PatchTasksDeletedEffect'
+                  - $ref: '#/components/schemas/PatchTasksParentTaskEffect'
+                  - $ref: '#/components/schemas/PatchTasksAssigneesEffect'
+                  - $ref: '#/components/schemas/PatchTasksListsEffect'
+                  - $ref: '#/components/schemas/PatchTasksFieldsEffect'
+                  - $ref: '#/components/schemas/PatchTasksMoveToTrashEffect'
+                  - $ref: '#/components/schemas/PatchTasksOutOfTrashEffect'
+    PatchTasksResponse:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/TaskObject'
+    SearchTasksResponse:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/TaskObject'
   securitySchemes:
     apiKey:
       type: apiKey
