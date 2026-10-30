@@ -1,4 +1,4 @@
-# Height (height)
+# Height
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,69 +64,111 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Height was an AI-powered collaborative project management tool that provided a REST API for managing tasks, lists, workspaces, attributes, dependencies, and automation triggers. The API enabled developers to programmatically interact with workspace resources, manage team members, post activity comments, configure webhooks for real-time event notifications, and integrate Height into custom workflows. Authentication was handled via secret API keys from workspace settings, with OAuth 2.0 available for third-party integrations. Height announced the shutdown of its service with a final date of September 24, 2025.
+> **No longer operating.** This company or product has shut down, been discontinued, or been deprecated. This profile is kept as a historical record and is not maintained or rated.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/height/refs/heads/main/apis.yml
+Height is an AI-powered collaborative project management tool that provides a REST API for managing tasks, lists, workspaces, attributes, dependencies, and automation triggers. The API enables developers to programmatically create, read, update, and delete tasks and task lists, manage workspace users and groups, post activity comments, and configure webhook integrations for real-time event notifications. Authentication is handled via secret API keys generated from workspace settings, with OAuth 2.0 available for third-party application integrations. Height announced the shutdown of its service with a final date of September 24, 2025, making this a historical profile of the platform's public developer footprint.
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=height-api-evangelist&utm_content=repo
+**Areas:** Project Management · Task Management · Collaboration · Productivity · Workflow Automation · Artificial Intelligence · Defunct
 
-## Tags
+## Height on APIs.io (historical record)
 
-- Project Management
-- Task Management
-- Collaboration
-- Productivity
-- Workflow Automation
-- AI
+Everything profiled for Height is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/height/](https://apis.io/providers/height/)** — or go straight to one of the APIs or properties below.
 
-## APIs
+### APIs (9)
 
-| Name | Description | Docs |
-|------|-------------|------|
-| Height REST API | REST API for tasks, lists, users, activities, field templates, webhooks, and automations | [Docs](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda) |
+- [Height Activities API](https://apis.io/apis/height/height-activities-api/) — Activities can be messages, status updates of the task or integration updates (i.e. GitHub).
+- [Height Field Templates API](https://apis.io/apis/height/height-field-templates-api/) — The Field Templates API from Height — 3 operation(s) for field templates.
+- [Height Groups API](https://apis.io/apis/height/height-groups-api/) — The Groups API from Height — 1 operation(s) for groups.
+- [Height Lists API](https://apis.io/apis/height/height-lists-api/) — Tasks belong to one list. To create tasks, it's necessary to know in which list you want to create them.
+- [Height Security Log Events API](https://apis.io/apis/height/height-security-log-events-api/) — The Security Log Events API from Height — 1 operation(s) for security log events.
+- [Height Task Forms API](https://apis.io/apis/height/height-task-forms-api/) — The Task Forms API from Height — 2 operation(s) for task forms.
+- [Height Tasks API](https://apis.io/apis/height/height-tasks-api/) — The Tasks API from Height — 3 operation(s) for tasks.
+- [Height Users API](https://apis.io/apis/height/height-users-api/) — The Users API from Height — 3 operation(s) for users.
+- [Height Workspace API](https://apis.io/apis/height/height-workspace-api/) — The Workspace API from Height — 1 operation(s) for workspace.
 
-## Plans / Rate Limits / FinOps
+### Published properties
 
-| Resource | File |
-|----------|------|
-| Plans & Pricing | [plans/height-plans-pricing.yml](plans/height-plans-pricing.yml) |
-| Rate Limits | [rate-limits/height-rate-limits.yml](rate-limits/height-rate-limits.yml) |
-| FinOps | [finops/height-finops.yml](finops/height-finops.yml) |
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-**Pricing summary:**
-- Free: $0/member/month — unlimited members, 50 MB storage, basic automations
-- Team: $8.50/member/month (monthly) or $6.99/member/month (annual)
-- Business: $14.99/member/month (monthly) or $11.99/member/month (annual)
-- Enterprise: Custom pricing
+#### Agentic access (1)
 
-**Rate limits:**
-- Global: 120 requests/minute
-- POST /activities: 60 requests/minute
-- POST /tasks: 60 requests/minute
-- HTTP 429 returned on excess
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Timestamps
+- [Height Agentic Access](https://apis.io/agentic-access/height/height-agentic-access/)
 
-| Field | Value |
-|-------|-------|
-| Created | 2026-06-13 |
-| Modified | 2026-06-13 |
+#### JSON-LD (1)
 
-## Common
+Linked-data contexts for the provider's vocabulary.
 
-| Type | URL |
-|------|-----|
-| Website | https://height.app |
-| Documentation | https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda |
-| GitHub Org | https://github.com/heightapp |
-| LinkedIn | https://www.linkedin.com/company/heightapp |
-| Blog | https://height.app/blog |
-| Pricing | https://height.app/pricing |
-| Status Page | https://status.height.app |
-| X / Twitter | https://twitter.com/height_app |
+- [Height Context](https://apis.io/jsonld/height/height-context/)
 
-## Maintainers
+#### Vocabulary (1)
 
-| Name | Email |
-|------|-------|
-| Kin Lane | kin@apievangelist.com |
+The provider's domain terms, defined.
+
+- [Height Vocabulary](https://apis.io/vocabularies/height/height-vocabulary/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Height APP Activities API](https://apis.io/collections/height/open-height-activities-api/)
+- [Height APP Activities Field Templates API](https://apis.io/collections/height/open-height-field-templates-api/)
+- [Height APP Activities Groups API](https://apis.io/collections/height/open-height-groups-api/)
+- [Height APP Activities Lists API](https://apis.io/collections/height/open-height-lists-api/)
+- [Height APP Activities Security Log Events API](https://apis.io/collections/height/open-height-security-log-events-api/)
+- [Height APP Activities Task Forms API](https://apis.io/collections/height/open-height-task-forms-api/)
+- [Height APP Activities Tasks API](https://apis.io/collections/height/open-height-tasks-api/)
+- [Height APP Activities Users API](https://apis.io/collections/height/open-height-users-api/)
+- [Height APP Activities Workspace API](https://apis.io/collections/height/open-height-workspace-api/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Height Authentication](https://apis.io/security/height/height-authentication/)
+- [Height Domain Security](https://apis.io/security/height/height-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Height Plans Pricing](https://apis.io/plans/height/height-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Height Rate Limits](https://apis.io/rate-limits/height/height-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Height Finops](https://apis.io/finops/height/height-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://height.app)
+- [Documentation](https://www.notion.so/API-documentation-643aea5bf01742de9232e5971cb4afda)
+- [Pricing](https://height.app/pricing)
+- [Blog](https://height.app/blog)
+- [Status](https://status.height.app)
+
+## API Evangelist rating
+
+**Not rated** — this company is recorded as no longer operating, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Height: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/height/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
